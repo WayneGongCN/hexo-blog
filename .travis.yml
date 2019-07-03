@@ -1,0 +1,17 @@
+branches:
+  only:
+    - source
+
+language: node_js
+
+node_js:
+  - lts/*
+
+cache: yarn
+
+before_script:
+  - sed -e 's/TOKEN/$GITHUB_TOKEN/' _config.yml
+  - git clone https://github.com/zowiegong/hexo-theme-os.git themes/os
+  - cat _theme.yml >  themes/os/_config.yml
+
+script: cat _config.yml
