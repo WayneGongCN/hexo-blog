@@ -3,14 +3,18 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "commit": "git-cz",
     "deploy": "hexo clean && hexo g && hexo d"
   },
   "hexo": {
     "version": "3.9.0"
   },
   "dependencies": {
+    "@commitlint/cli": "^8.0.0",
+    "@commitlint/config-conventional": "^8.0.0",
+    "commitizen": "^3.1.1",
+    "cz-conventional-changelog": "^2.1.0",
     "hexo": "^3.9.0",
-    "hexo-all-minifier": "^0.5.3",
     "hexo-browsersync": "^0.3.0",
     "hexo-deployer-git": "^1.0.0",
     "hexo-generator-archive": "^0.1.5",
@@ -24,6 +28,17 @@
     "hexo-renderer-jade": "^0.4.1",
     "hexo-renderer-stylus": "^0.3.3",
     "hexo-server": "^0.3.3",
+    "husky": "^3.0.0",
     "install": "^0.12.2"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }  
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
