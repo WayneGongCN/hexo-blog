@@ -4,12 +4,11 @@
 
 # Site
 title: OS
-subtitle: blog
-description: blog
-keywords: blog
+subtitle: Simple and light old style theme.
+description: 巧言令色鲜矣仁
 author: zowiegong
 language: zh-CN
-timezone:
+timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -79,11 +78,8 @@ theme: os
 githubRender:
   request:
     headers:
-      Authorization: token {TOKEN}
+      Authorization: token {TOKEN} 
       User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36
-
-# miniify
-all_minifier: true
 
 deploy:
   type: git   

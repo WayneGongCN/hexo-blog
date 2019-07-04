@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "commit": "git-cz",
-    "deploy": "hexo clean && hexo g && hexo d"
+    "deploy": "hexo clean && hexo g && hexo g && hexo d"
   },
   "hexo": {
     "version": "3.9.0"
@@ -15,7 +15,6 @@
     "commitizen": "^3.1.1",
     "cz-conventional-changelog": "^2.1.0",
     "hexo": "^3.9.0",
-    "hexo-all-minifier": "^0.5.3",
     "hexo-browsersync": "^0.3.0",
     "hexo-deployer-git": "^1.0.0",
     "hexo-filter-asset-inline": "^1.1.1",
