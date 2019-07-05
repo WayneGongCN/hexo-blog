@@ -1,5 +1,5 @@
 ---
-title: 配置 IPv6 与 cloudflare DDNS
+title: 配置 IPv6 与 Cloudflare DDNS
 date: 2019-06-11
 tags: network
 categories: notes
@@ -28,14 +28,14 @@ categories: notes
 
 ## Cloudflare DDNS
 
-IPv6 为动态获取且，需要做动态域名解析，确保外网能通过域名连接家里都设备。
+IPv6 为动态获取且，需要做动态域名解析，确保外网能通过域名连接家里的设备。
 
 可以通过 Cloudflare 提供的 [API](https://api.cloudflare.com/#dns-records-for-a-zone-update-dns-record) 进行更新。
 
 
 ### DDNS
 
-对于 `Padavan`、`OpenWrt` 等比较开放都路由器固件，可以使用下面的 [Shell 脚本](https://gist.github.com/zowiegong/6349d420789bb70aaebc7ce7eb1daccf)进行 DDNS:
+对于 `Padavan`、`OpenWrt` 等比较开放的路由器固件，可以使用下面的 [Shell 脚本](https://gist.github.com/zowiegong/6349d420789bb70aaebc7ce7eb1daccf)进行 DDNS:
 
 API token 在 Profile 页面底部查看。
 

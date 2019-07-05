@@ -4,3 +4,6 @@ menu:
   about: /about
 
 googleAnalytics: UA-121105508-1
+
+plugins:
+  scrollToTop: true
