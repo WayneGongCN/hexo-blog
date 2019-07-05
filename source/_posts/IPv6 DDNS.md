@@ -1,13 +1,13 @@
 ---
-title: IPv6 DDNS
+title: 配置 IPv6 与 cloudflare DDNS
 date: 2019-06-11
 tags: network
 categories: notes
 ---
 
+## IPv6 配置
 
-## Cloudflare IPv6 DDNS
-
+中国电信 200M 光纤宽度没有 IPv4 外网地址，试试获取 IPv6 地址。
 
 ### 配置光猫
 
@@ -16,24 +16,30 @@ categories: notes
 
 ### 路由器配置
 
-启用 IPv6，
-连接类型 `Native DHCPv6`、`Stateless:RA`，DNS 自动获取，内网 Ipv6 地址通过 DHCPv6 获取。
+启用 IPv6，连接类型 `Native DHCPv6`、`Stateless:RA`，DNS 自动获取，内网 Ipv6 地址通过 DHCPv6 获取。
 
 
 ### 重新拨号
 
 重新拨号，此时路由器与内网设备应该能正常获取到 IPv6 地址。
 
-[测试地址](https://ipv6-test.com/)
+[IPv6 测试地址](https://ipv6-test.com/)
+
+
+## Cloudflare DDNS
+
+IPv6 为动态获取且，需要做动态域名解析，确保外网能通过域名连接家里都设备。
+
+可以通过 Cloudflare 提供的 [API](https://api.cloudflare.com/#dns-records-for-a-zone-update-dns-record) 进行更新。
 
 
 ### DDNS
 
-由于 IPv6 地址动态获取且每次都不一样，所以需要做动态域名解析，确保外网能通过域名连接家里都设备。
-
-通过 Cloudflare 提供的 [API](https://api.cloudflare.com/#dns-records-for-a-zone-update-dns-record) 进行 DDNS。
-
 对于 `Padavan`、`OpenWrt` 等比较开放都路由器固件，可以使用下面的 [Shell 脚本](https://gist.github.com/zowiegong/6349d420789bb70aaebc7ce7eb1daccf)进行 DDNS:
+
+API token 在 Profile 页面底部查看。
+
+zoneId、dnsId 分别通过 [List Zones](https://api.cloudflare.com/#zone-list-zones) 与 [List DNS Records](https://api.cloudflare.com/#dns-records-for-a-zone-list-dns-records) 两个接口获取。
 
 ```shell
 #!/bin/sh
