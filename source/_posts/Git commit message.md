@@ -1,5 +1,5 @@
 ---
-title: 规范化与校验 Git commit message
+title: Git commit message 规范化与校验
 date: 2019-07-04
 tags: notes
 categories: notes
