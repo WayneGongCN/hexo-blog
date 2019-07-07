@@ -970,7 +970,7 @@ clean-css@^3.1.9:
     commander "2.8.x"
     source-map "0.4.x"
 
-clean-css@^4.1.11:
+clean-css@^4.1.11, clean-css@^4.2.1:
   version "4.2.1"
   resolved "https://registry.npm.taobao.org/clean-css/download/clean-css-4.2.1.tgz#2d411ef76b8569b6d0c84068dabe85b0aa5e5c17"
   integrity sha1-LUEe92uFabbQyEBo2r6FsKpeXBc=
@@ -1044,10 +1044,15 @@ commander@2.8.x:
   dependencies:
     graceful-readlink ">= 1.0.0"
 
-commander@^2.2.0:
+commander@^2.19.0, commander@^2.2.0, commander@~2.20.0:
   version "2.20.0"
   resolved "https://registry.npm.taobao.org/commander/download/commander-2.20.0.tgz#d58bb2b5c1ee8f87b0d340027e9e94e222c5a422"
   integrity sha1-1YuytcHuj4ew00ACfp6U4iLFpCI=
+
+commander@~2.13.0:
+  version "2.13.0"
+  resolved "https://registry.npm.taobao.org/commander/download/commander-2.13.0.tgz#6964bca67685df7c1f1430c584f07d7597885b9c"
+  integrity sha1-aWS8pnaF33wfFDDFhPB9dZeIW5w=
 
 commander@~2.6.0:
   version "2.6.0"
@@ -2155,6 +2160,11 @@ has@^1.0.1:
   dependencies:
     function-bind "^1.1.1"
 
+he@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.npm.taobao.org/he/download/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
+  integrity sha1-hK5l+n6vsWX922FWauFLrwVmTw8=
+
 hexo-browsersync@^0.3.0:
   version "0.3.0"
   resolved "https://registry.npm.taobao.org/hexo-browsersync/download/hexo-browsersync-0.3.0.tgz#3d43435374921442891ed180ba17e5194ed0d394"
@@ -2201,6 +2211,15 @@ hexo-deployer-git@^1.0.0:
     hexo-util "^0.6.0"
     moment "^2.18.0"
     swig-templates "^2.0.2"
+
+hexo-filter-minify@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.npm.taobao.org/hexo-filter-minify/download/hexo-filter-minify-0.0.1.tgz?cache=0&sync_timestamp=1562487384643&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fhexo-filter-minify%2Fdownload%2Fhexo-filter-minify-0.0.1.tgz#11c7b7f3b3dd6ad6d912dd021258cfea79790edf"
+  integrity sha1-Ece387PdatbZEt0CEljP6nl5Dt8=
+  dependencies:
+    html-minifier "^4.0.0"
+    uglify-es "^3.3.9"
+    uglifycss "^0.0.29"
 
 hexo-front-matter@^0.2.3:
   version "0.2.3"
@@ -2402,6 +2421,19 @@ html-entities@^1.2.0:
   version "1.2.1"
   resolved "https://registry.npm.taobao.org/html-entities/download/html-entities-1.2.1.tgz#0df29351f0721163515dfb9e5543e5f6eed5162f"
   integrity sha1-DfKTUfByEWNRXfueVUPl9u7VFi8=
+
+html-minifier@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.npm.taobao.org/html-minifier/download/html-minifier-4.0.0.tgz#cca9aad8bce1175e02e17a8c33e46d8988889f56"
+  integrity sha1-zKmq2LzhF14C4XqMM+RtiYiIn1Y=
+  dependencies:
+    camel-case "^3.0.0"
+    clean-css "^4.2.1"
+    commander "^2.19.0"
+    he "^1.2.0"
+    param-case "^2.1.1"
+    relateurl "^0.2.7"
+    uglify-js "^3.5.1"
 
 htmlparser2@^3.9.1:
   version "3.10.1"
@@ -3738,6 +3770,13 @@ p-try@^2.0.0:
   resolved "https://registry.npm.taobao.org/p-try/download/p-try-2.2.0.tgz#cb2868540e313d61de58fafbe35ce9004d5540e6"
   integrity sha1-yyhoVA4xPWHeWPr741zpAE1VQOY=
 
+param-case@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.npm.taobao.org/param-case/download/param-case-2.1.1.tgz#df94fd8cf6531ecf75e6bef9a0858fbc72be2247"
+  integrity sha1-35T9jPZTHs915r75oIWPvHK+Ikc=
+  dependencies:
+    no-case "^2.2.0"
+
 parent-module@^1.0.0:
   version "1.0.1"
   resolved "https://registry.npm.taobao.org/parent-module/download/parent-module-1.0.1.tgz#691d2709e78c79fae3a156622452d00762caaaa2"
@@ -4219,6 +4258,11 @@ regex-not@^1.0.0, regex-not@^1.0.2:
     extend-shallow "^3.0.2"
     safe-regex "^1.1.0"
 
+relateurl@^0.2.7:
+  version "0.2.7"
+  resolved "https://registry.npm.taobao.org/relateurl/download/relateurl-0.2.7.tgz#54dbf377e51440aca90a4cd274600d3ff2d888a9"
+  integrity sha1-VNvzd+UUQKypCkzSdGANP/LYiKk=
+
 remove-trailing-separator@^1.0.1:
   version "1.1.0"
   resolved "https://registry.npm.taobao.org/remove-trailing-separator/download/remove-trailing-separator-1.1.0.tgz#c24bce2a283adad5bc3f58e0d48249b92379d8ef"
@@ -4688,7 +4732,7 @@ source-map@^0.5.0, source-map@^0.5.6, source-map@~0.5.1:
   resolved "https://registry.npm.taobao.org/source-map/download/source-map-0.5.7.tgz#8a039d2d1021d22d1ea14c80d8ea468ba2ef3fcc"
   integrity sha1-igOdLRAh0i0eoUyA2OpGi6LvP8w=
 
-source-map@~0.6.0:
+source-map@~0.6.0, source-map@~0.6.1:
   version "0.6.1"
   resolved "https://registry.npm.taobao.org/source-map/download/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
   integrity sha1-dHIq8y6WFOnCh6jQu95IteLxomM=
@@ -5064,6 +5108,14 @@ uberproto@^1.1.0:
   resolved "https://registry.npm.taobao.org/uberproto/download/uberproto-1.2.0.tgz#61d4eab024f909c4e6ea52be867c4894a4beeb76"
   integrity sha1-YdTqsCT5CcTm6lK+hnxIlKS+63Y=
 
+uglify-es@^3.3.9:
+  version "3.3.9"
+  resolved "https://registry.npm.taobao.org/uglify-es/download/uglify-es-3.3.9.tgz#0c1c4f0700bed8dbc124cdb304d2592ca203e677"
+  integrity sha1-DBxPBwC+2NvBJM2zBNJZLKID5nc=
+  dependencies:
+    commander "~2.13.0"
+    source-map "~0.6.1"
+
 uglify-js@2.6.0:
   version "2.6.0"
   resolved "https://registry.npm.taobao.org/uglify-js/download/uglify-js-2.6.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fuglify-js%2Fdownload%2Fuglify-js-2.6.0.tgz#25eaa1cc3550e39410ceefafd1cfbb6b6d15f001"
@@ -5084,6 +5136,14 @@ uglify-js@^2.4.19, uglify-js@^2.6.1:
   optionalDependencies:
     uglify-to-browserify "~1.0.0"
 
+uglify-js@^3.5.1:
+  version "3.6.0"
+  resolved "https://registry.npm.taobao.org/uglify-js/download/uglify-js-3.6.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fuglify-js%2Fdownload%2Fuglify-js-3.6.0.tgz#704681345c53a8b2079fb6cec294b05ead242ff5"
+  integrity sha1-cEaBNFxTqLIHn7bOwpSwXq0kL/U=
+  dependencies:
+    commander "~2.20.0"
+    source-map "~0.6.1"
+
 uglify-js@~2.2.5:
   version "2.2.5"
   resolved "https://registry.npm.taobao.org/uglify-js/download/uglify-js-2.2.5.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fuglify-js%2Fdownload%2Fuglify-js-2.2.5.tgz#a6e02a70d839792b9780488b7b8b184c095c99c7"
@@ -5096,6 +5156,11 @@ uglify-to-browserify@~1.0.0:
   version "1.0.2"
   resolved "https://registry.npm.taobao.org/uglify-to-browserify/download/uglify-to-browserify-1.0.2.tgz#6e0924d6bda6b5afe349e39a6d632850a0f882b7"
   integrity sha1-bgkk1r2mta/jSeOabWMoUKD4grc=
+
+uglifycss@^0.0.29:
+  version "0.0.29"
+  resolved "https://registry.npm.taobao.org/uglifycss/download/uglifycss-0.0.29.tgz#abe49531155d146e75dd2fdf933d371bc1180054"
+  integrity sha1-q+SVMRVdFG513S/fkz03G8EYAFQ=
 
 ultron@~1.1.0:
   version "1.1.1"
