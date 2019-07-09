@@ -2,9 +2,7 @@
 title: 当我在写代码时我在想什么
 date: 2019-07-08
 categories: thinking
-tags:
-  - thinking
-  - codeing
+tags: thinking
 ---
 
 ~~我是谁？~~
@@ -17,6 +15,8 @@ tags:
 ## 2019-07-09
 
 众所周知，只要跟图形界面扯上关系事情就会变得复杂。
+
+多说一句。为什么会有人喜欢玩手游？
 
 
 ## 2019-07-08
