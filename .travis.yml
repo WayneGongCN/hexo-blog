@@ -6,10 +6,10 @@ node_js:
 cache: yarn
 
 before_script:
+  - git clone https://github.com/zowiegong/hexo-theme-os.git themes/os
   - sed  "s/{TOKEN}/${GITHUB_TOKEN}/" _config.yml > _config.yml.temp
   - mv _config.yml.temp _config.yml
   - sed  "s/{DATE}/$(date +%s)/" themes/os/source/sw.js > themes/os/source/_sw.js
   - mv themes/os/source/_sw.js themes/os/source/sw.js
-  - git clone https://github.com/zowiegong/hexo-theme-os.git themes/os
 
 script: yarn deploy
