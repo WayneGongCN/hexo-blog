@@ -9,6 +9,5 @@ before_script:
   - sed  "s/{TOKEN}/${GITHUB_TOKEN}/" _config.yml > _config.yml.temp
   - mv _config.yml.temp _config.yml
   - git clone https://github.com/zowiegong/hexo-theme-os.git themes/os
-  - cat _theme.yml >  themes/os/_config.yml
 
 script: yarn deploy
