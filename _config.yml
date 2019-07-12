@@ -77,7 +77,7 @@ theme: os
 githubRender:
   request:
     headers:
-      Authorization: token 6c15f6cb35f21d1e0cf44f9d2b7dcc1b851a73f7 
+      Authorization: token {TOKEN} 
       User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36
 
 
