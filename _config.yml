@@ -21,7 +21,7 @@ permalink_defaults:
 source_dir: source
 public_dir: public
 tag_dir: tags
-archive_dir: archives
+# archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
@@ -48,8 +48,7 @@ highlight:
 # per_page: Posts displayed per page. (0 = disable pagination)
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
-  path: ''
-  per_page: 0
+  path: '/'
   order_by: -date
   
 # Category & Tag
@@ -78,14 +77,9 @@ theme: os
 githubRender:
   request:
     headers:
-      Authorization: token {TOKEN}
+      Authorization: token 6c15f6cb35f21d1e0cf44f9d2b7dcc1b851a73f7 
       User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36
 
-# minify
-# minify:
-#   html:
-#   css:
-#   js:
 
 deploy:
   type: git
