@@ -1,8 +1,7 @@
 ---
 title: 尾调用优化
 date: 2018-10-11
-tags:
-categories: other
+categories: notes
 ---
 
 当函数的调用层数非常多时，需要同时保存成千上百个调用记录，调用栈会消耗不少内存，甚容易导致[栈溢出](https://zh.wikipedia.org/wiki/%E6%A0%88%E6%BA%A2%E5%87%BA)。
