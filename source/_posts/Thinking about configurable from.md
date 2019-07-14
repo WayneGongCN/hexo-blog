@@ -13,7 +13,7 @@ keywords:
 
 
 
-> 基于 Vue、Element，对表单配置化的 [一个实现](https://github.com/maggie-wayne/conf-table-form-lib) ![GitHub stars](https://img.shields.io/github/stars/maggie-wayne/conf-table-form-lib.svg?style=social)
+> 基于 Vue、Element，对表单配置化的 [一个实现 ![GitHub stars](https://img.shields.io/github/stars/maggie-wayne/conf-table-form-lib.svg?style=social)](https://github.com/maggie-wayne/conf-table-form-lib)
 
 
 
