@@ -13,3 +13,6 @@ before_script:
   - mv themes/os/source/_sw.js themes/os/source/sw.js
 
 script: yarn deploy
+
+after_script:
+  - curl https://www.google.com/ping?sitemap=https://zowiegong.com/sitemap.xml
