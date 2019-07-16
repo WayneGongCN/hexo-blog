@@ -16,3 +16,4 @@ script: yarn deploy
 
 after_script:
   - curl https://www.google.com/ping?sitemap=https://zowiegong.com/sitemap.xml
+  - curl -X POST 'http://ping.baidu.com/ping/RPC2' --header "Content-Type:text/xml" -d "<?xml version="1.0"?><methodCall><methodName>weblogUpdates.ping</methodName><params><param><value><string>https://zowiegong.com/atom.xml</string></value></param><param><value><string>https://zowiegong.com/atom.xml</string></value></param></params></methodCall>"
