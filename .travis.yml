@@ -14,6 +14,10 @@ before_script:
 
 script: yarn deploy
 
+# SEO search engine ping
 after_script:
   - curl https://www.google.com/ping?sitemap=https://zowiegong.com/sitemap.xml
+  - curl https://www.bing.com/ping?sitemap=https://zowiegong.com/sitemap.xml
   - curl -X POST 'http://ping.baidu.com/ping/RPC2' --header "Content-Type:text/xml" -d "<?xml version="1.0"?><methodCall><methodName>weblogUpdates.ping</methodName><params><param><value><string>https://zowiegong.com/atom.xml</string></value></param><param><value><string>https://zowiegong.com/atom.xml</string></value></param></params></methodCall>"
+  - curl -X POST 'http://ping.baidu.com/ping/RPC2' --header "Content-Type:text/xml" -d "<?xml version="1.0"?><methodCall><methodName>weblogUpdates.ping</methodName><params><param><value><string>https://zowiegong.com/sitemap.xml</string></value></param><param><value><string>https://zowiegong.com/sitemap.xml</string></value></param></params></methodCall>"
+  - curl 'https://pingomatic.com/ping/?title=zowiegong&blogurl=https%3A%2F%2Fzowiegong.com&rssurl=https%3A%2F%2Fzowiegong.com%2Fatom.xml&chk_blogs=on&chk_feedburner=on&chk_tailrank=on&chk_superfeedr=on'
