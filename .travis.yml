@@ -3,7 +3,14 @@ language: node_js
 node_js:
   - lts/*
 
-cache: yarn
+cache:
+  directories:
+    - node_modules
+    - public
+    - cache
+
+before_cache:
+  - mv db.json cache/
 
 before_script:
   - git clone https://github.com/zowiegong/hexo-theme-os.git themes/os
@@ -11,6 +18,7 @@ before_script:
   - mv _config.yml.temp _config.yml
   - sed  "s/{DATE}/$(date +%s)/" themes/os/source/sw.js > themes/os/source/_sw.js
   - mv themes/os/source/_sw.js themes/os/source/sw.js
+  - if [ -d cache/db.json ]; then mv cache/db.json ./; fi;
 
 script: yarn deploy
 
