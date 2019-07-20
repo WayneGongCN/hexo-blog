@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "commit": "git-cz",
-    "deploy": "hexo g && hexo g && hexo d"
+    "deploy": "hexo g && hexo d"
   },
   "hexo": {
     "version": "3.9.0"
