@@ -10,7 +10,10 @@ cache:
     - cache
 
 before_cache:
+  - ls -lh
   - mv db.json cache/
+  - ls cache -lh
+  - ls public -lh
 
 before_script:
   - git clone https://github.com/zowiegong/hexo-theme-os.git themes/os
@@ -18,7 +21,10 @@ before_script:
   - mv _config.yml.temp _config.yml
   - sed  "s/{DATE}/$(date +%s)/" themes/os/source/sw.js > themes/os/source/_sw.js
   - mv themes/os/source/_sw.js themes/os/source/sw.js
-  - if [ -d cache/db.json ]; then mv cache/db.json ./; fi;
+  - ls cache -lh
+  - ls public -lh
+  - if [ -f cache/db.json ]; then mv cache/db.json ./; fi;
+  - ls -lh
 
 script: yarn deploy
 
