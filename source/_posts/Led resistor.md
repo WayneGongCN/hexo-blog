@@ -18,7 +18,7 @@ LED 发光二极管限流电阻阻值计算。
 LED 正常工作不应超过 `PM`、`IFM`、`VRM` 这三个极限参数。
 
 ## 限流电阻计算
-![原理图](http://ofl97l8av.bkt.clouddn.com/18-7-3/63657710.jpg)
+![原理图](https://raw.githubusercontent.com/zowiegong/hexo-blog/master/source/images/20190722121759.png)
 
 假设 LED1 `VF=3V`、`IF=20mA`，电源电压为 `Vcc=5V`。
 
