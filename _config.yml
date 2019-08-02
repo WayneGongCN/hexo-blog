@@ -34,7 +34,7 @@ titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
@@ -77,7 +77,7 @@ theme: os
 githubRender:
   request:
     headers:
-      Authorization: token {TOKEN}
+      Authorization: token 8e4368714dd1e0b9e97d820821f6d11eb5a3af7c
 
 deploy:
   type: git
