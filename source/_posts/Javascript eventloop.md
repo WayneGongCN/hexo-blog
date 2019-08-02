@@ -1,7 +1,7 @@
 ---
 title: Javascript 并发模型与事件循环
 date: 2018-10-10
-tags: js
+tags: javascript
 categories: notes
 ---
 

@@ -2,8 +2,8 @@
 title: Docker 安装 ownCloud
 date: 2017-12-17
 tags:
-  - Docker
-  - Linux
+  - docker
+  - javascript
 categories: notes
 ---
 

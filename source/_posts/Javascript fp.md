@@ -1,7 +1,7 @@
 ---
 title: Javascript 函数式编程
 date: 2017-08-15
-tags: js
+tags: javascript
 categories: notes
 ---
 

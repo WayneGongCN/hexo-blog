@@ -1,7 +1,7 @@
 ---
 title: Javascript 五子棋
 date: 2017-09-22
-tags: js
+tags: javascript
 categories: notes
 ---
 
