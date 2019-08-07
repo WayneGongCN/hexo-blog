@@ -37,13 +37,13 @@ npm insatll commitizen cz-conventional-changelog --save-dev
 安装 @commitlint/cli 命令行工具与 @commitlint/config-conventional 校验规则 npm 包。
 ```shell
 # 安装依赖
-npm install @commitlint/config-conventional @commitlint/cli --save-dev
+npm install @commitlint/config-conventional @commitlint/cli husky --save-dev
 
 # 新建一个配置文件
 echo "module.exports = {extends: ['@commitlint/config-conventional']}" > commitlint.config.js
 ```
 
-配置 git hook，这里使用 husky。
+配置 husky git hook。
 ```
 {
   "husky": {
@@ -55,6 +55,3 @@ echo "module.exports = {extends: ['@commitlint/config-conventional']}" > commitl
 ```
 
 现在试着随便提交一些 commit message，不符合规则的则会被 commitlin 提示并取消这次提交。
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMDA2ODM5MywxOTQ4MTQwOTA5XX0=
--->
