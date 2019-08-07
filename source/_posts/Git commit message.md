@@ -10,7 +10,7 @@ categories: notes
 
 安装 commitizen cli 命令行工具与 commitizen adapter 适配器（可以理解为 commit message 的模板）
 ```
-yarn add commitizen cz-conventional-changelog
+npm insatll commitizen cz-conventional-changelog --save-dev
 ```
 
 `package.json` 中配置 `script` 与 `config` 字段。
