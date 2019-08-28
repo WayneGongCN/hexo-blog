@@ -11,6 +11,17 @@ tags: thinking
 
 我要到哪里去？
 
+## 2019-08-28
+
+Windows 下为 Anaconda 设置代理。
+
+`C:\Users\<username>\.condarc`:
+```
+proxy_servers:
+    http: http://http-proxy:8080
+    https: https://https-proxy:8080
+```
+
 
 ## 2019-07-26
 
