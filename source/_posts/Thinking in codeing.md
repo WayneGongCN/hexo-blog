@@ -14,6 +14,7 @@ tags: thinking
 ## 2019-09-29
 
 生成 requirements.txt: `pip freeze > requirements.txt`
+
 通过 requirements.txt 安装: `pip install -r requirements.txt`
 
 
