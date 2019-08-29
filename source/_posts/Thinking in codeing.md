@@ -11,6 +11,12 @@ tags: thinking
 
 我要到哪里去？
 
+## 2019-09-29
+
+生成 requirements.txt: `pip freeze > requirements.txt`
+通过 requirements.txt 安装: `pip install -r requirements.txt`
+
+
 ## 2019-08-28
 
 Windows 下为 Anaconda 设置代理。
