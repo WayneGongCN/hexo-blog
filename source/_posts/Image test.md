@@ -23,7 +23,7 @@ date: 2019-07-10
 
 ## Small image
 
-![Small image](https://raw.githubusercontent.com/zowiegong/hexo-blog/master/source/images/20190710190729.png)
+![Small image](/images/image_test/20190710190729.png)
 
 
 ## 兰亭集序
@@ -39,7 +39,7 @@ date: 2019-07-10
 
 ## Big image
 
-![Big image](https://raw.githubusercontent.com/zowiegong/hexo-blog/master/source/images/20190710190722.png)
+![Big image](/images/image_test/20190710190722.png)
 
 
 ## 前出师表
@@ -65,4 +65,4 @@ date: 2019-07-10
 
 ## small image
 
-![small image](https://raw.githubusercontent.com/zowiegong/hexo-blog/master/source/images/20190710191028.png)
+![small image](/images/image_test/20190710191028.png)
