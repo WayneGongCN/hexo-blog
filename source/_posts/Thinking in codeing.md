@@ -11,6 +11,10 @@ tags: thinking
 
 我要到哪里去？
 
+## 2020-01-17
+
+一个功能丰富扩展性很高的开源家庭自动化平台：[Home assistant](https://www.home-assistant.io/)
+
 ## 2019-09-29
 
 生成 requirements.txt: `pip freeze > requirements.txt`
