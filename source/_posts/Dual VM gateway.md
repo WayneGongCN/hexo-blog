@@ -1,5 +1,5 @@
 ---
-title: 双虚拟机隔离网关机的配置
+title: 双虚拟机隔离中网关机的配置
 date:  2018-06-11
 tags: privacy
 categories: notes
