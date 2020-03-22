@@ -1,5 +1,5 @@
 ---
-title: 群晖Docker部署Codimd
+title: 群晖 Docker 部署 Codimd
 date: 2020-03-22 16:28:58
 tags:
     - Docker
@@ -10,9 +10,11 @@ categories:
 ## 前言
 
 在线文档协同编辑有很多选择，但是大多都没有支持 Markdown。
+
 发现一款 Markdown 在线协同编辑平台 [hackmd](https://hackmd.io)（貌似打不开），社区免费版叫做 [Codimd](https://github.com/hackmdio/codimd)。
 
 在 [demo.codimd.org](https://demo.codimd.org/) 体验了几天非常不错。
+
 支持多人实时在线编辑、简单的版本控制、样式简洁、公式、目录、代码高亮、各种图表支持的也非常到位。
 
 但是看着域名中的 demo 害怕突然哪天跟 hackmd.io 一样打不开就完蛋了，家里星际蜗牛 24 小时开机，打算部署在黑群晖的 Docker 中。
@@ -21,6 +23,7 @@ categories:
 ## 部署
 
 黑群晖没有装 `docker-compose`，不过群晖的 Docker 控制台对新手也非常友好。
+
 根据 [https://github.com/codimd/container](https://github.com/codimd/container) 仓库中的 `docker-compose.yml` 来简单配置一下就可以了。
 
 提前拉一下需要的 images：
@@ -35,7 +38,7 @@ categories:
 1. 选中 MySQL 映像，启动。
 2. 勾选高权限、设置优先级（可选）
 3. 进入高级设置，自动重启勾上（可选）
-4. 选择“卷”映射数据目录到 `/var/lib/mysql`，映射 [uft8.cnf](https://github.com/codimd/container/blob/master/resources/utf8.cnf) 文件到 `resources/utf8.cnf:/etc/mysql/conf.d/utf8.cnf`
+4. 选择“卷”映射数据目录到 `/var/lib/mysql`，映射 [ uft8.cnf ](https://github.com/codimd/container/blob/master/resources/utf8.cnf) 到 `/etc/mysql/conf.d/utf8.cnf`
 5. 配置环境变量
     - `MYSQL_USER = hackmd`
     - `MYSQL_PASSWORD = xxxxxx`
