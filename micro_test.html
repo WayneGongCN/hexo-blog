@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var formData = new FormData();
+
+        formData.append("client_id", "dd3b69f4-e298-44b4-be3d-010f11e08bfc");
+        formData.append("scope", 'https://graph.microsoft.com/.default');
+        formData.append("client_secret", 'UZgGZvqUtWG6u0RCjw./Qk-K25weh:_1');
+        formData.append("grant_type", 'client_credentials');
+
+        var request = new XMLHttpRequest();
+        const tenant = getQueryVariable('tenant')
+        request.open("POST", `https://login.microsoftonline.com/${tenant}/oauth2/v2.0/toke`);
+        request.send(formData);
+
+        function getQueryVariable(variable) {
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            for (var i = 0; i < vars.length; i++) {
+                var pair = vars[i].split("=");
+                if (pair[0] == variable) { return pair[1]; }
+            }
+            return (false);
+        }
+    </script>
+</body>
+
+</html>
