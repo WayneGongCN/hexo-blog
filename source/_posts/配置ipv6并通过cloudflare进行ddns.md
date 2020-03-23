@@ -7,7 +7,7 @@ categories: notes
 
 ## IPv6 配置
 
-中国电信 200M 光纤宽度没有 IPv4 外网地址，试试获取 IPv6 地址。
+新办的电信 200M 光纤宽带没有 IPv4 外网地址，尝试获取 IPv6 地址。
 
 ### 配置光猫
 
@@ -28,7 +28,7 @@ categories: notes
 
 ## Cloudflare DDNS
 
-IPv6 为动态获取且，需要做动态域名解析，确保外网能通过域名连接家里的设备。
+IPv6 为动态获取，需要做动态域名解析，确保外网能通过域名连接家里的设备。
 
 可以通过 Cloudflare 提供的 [API](https://api.cloudflare.com/#dns-records-for-a-zone-update-dns-record) 进行更新。
 
