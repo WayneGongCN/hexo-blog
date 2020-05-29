@@ -5,8 +5,6 @@ type: post
 
 [![Build Status](https://travis-ci.com/zowiegong/hexo-blog.svg?branch=master)](https://travis-ci.com/zowiegong/hexo-blog)
 
-
-
 使用 [Hexo](https://hexo.io/zh-cn/docs/index.html) 生成静态页面
 
 页面托管于 [GitHub Pages](https://pages.github.com/)
@@ -17,4 +15,4 @@ type: post
 
 源文件仓库 [hexo-blog ](https://github.com/zowiegong/hexo-blog) [![hexo-blog stars](https://img.shields.io/github/stars/zowiegong/hexo-blog.svg?style=social)](https://github.com/zowiegong/hexo-blog)
 
-使用 [hexo-renderer-github](https://github.com/zowiegong/hexo-renderer-github) 渲染 Markdown [![hexo-renderer-github stars](https://img.shields.io/github/stars/zowiegong/hexo-renderer-github.svg?style=social)](https://github.com/zowiegong/hexo-renderer-github)
+~~使用 [hexo-renderer-github](https://github.com/zowiegong/hexo-renderer-github) 渲染 Markdown [![hexo-renderer-github stars](https://img.shields.io/github/stars/zowiegong/hexo-renderer-github.svg?style=social)](https://github.com/zowiegong/hexo-renderer-github)~~

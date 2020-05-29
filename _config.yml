@@ -73,13 +73,10 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 theme: os
 
-# github renderer
-githubRender:
-  request:
-    headers:
-      Authorization: token {TOKEN}
-
 deploy:
-  type: git
-  repo: https://{TOKEN}@github.com/zowiegong/hexo-blog.git
-  branch: gh-pages #published
+  provider: pages
+  skip_cleanup: true
+  github_token: $TOKEN
+  target_branch: gh-pages
+  on:
+    branch: master

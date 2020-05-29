@@ -13,6 +13,6 @@
 
 使用 [OS](https://github.com/zowiegong/hexo-theme-os) 主题
 
-使用 [hexo-renderer-github](https://github.com/zowiegong/hexo-renderer-github) 通过 [GitHub API](https://developer.github.com/v3/markdown/#render-an-arbitrary-markdown-document) 渲染 Markdown 文件
+~~使用 [hexo-renderer-github](https://github.com/zowiegong/hexo-renderer-github) 通过 [GitHub API](https://developer.github.com/v3/markdown/#render-an-arbitrary-markdown-document) 渲染 Markdown 文件~~
 
 使用 [Travis CI](https://travis-ci.com) 完成自动化构建、部署
