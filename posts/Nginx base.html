@@ -1,0 +1,106 @@
+<!DOCTYPE html><html lang="en"><title>Nginx 基本配置 - OS</title><meta charset="utf-8"><meta name="description"content="Nginx 基本配置"><meta name="keywords"><meta name="subtitle"content="Code &amp; Life"><meta name="author"content="zowiegong"><meta name="language"content="zh-CN"><meta name="timezone"content="Asia/Shanghai"><meta name="viewport"content="width=device-width,initial-scale=1"><link href="/manifest.json"rel="manifest"><link href="/atom.xml"rel="alternate"type="application/atom+xml"><link href="/favicon.ico"rel="shortcut icon"type="image/x-icon"><link href="/css/style.css"rel="stylesheet"><link href="/css/post.css"rel="stylesheet"><meta name="generator"content="Hexo 4.2.0"><header id="header-container"><h1 id="blog-title"><a href="/">OS</a></h1><nav><ul class="menu-list"><li class="menu-list-item"><a href="/categories"class="menu-name">categories</a><li class="menu-list-item"><a href="/tags"class="menu-name">tags</a><li class="menu-list-item"><a href="/about"class="menu-name">about</a></ul></nav></header><article class="main"><h1 id="post-title">Nginx 基本配置</h1><div class="post-info"><time class="post-date">2017-12-17</time><ul class="tag-list"><li class="tag-item"><a href="/tags/linux/"class="tag-name">#linux</a><li class="tag-item"><a href="/tags/nginx/"class="tag-name">#nginx</a></ul></div><section class="markdown-body"><h2 id="安装"><a href="#安装"class="headerlink"title="安装"></a>安装</h2><p>ubuntu 系统安装 nginx<pre><code class="shell">sudo apt-get install nginx</code></pre><p>编译安装<pre><code class="shell">./configure
+make
+sudo make install</code></pre><p>编译参数<pre><code class="shell">./configure \
+--user=nginx                          \
+--group=nginx                         \
+--prefix=/etc/nginx                   \
+--sbin-path=/usr/sbin/nginx           \
+--conf-path=/etc/nginx/nginx.conf     \
+--pid-path=/var/run/nginx.pid         \
+--lock-path=/var/run/nginx.lock       \
+--error-log-path=/var/log/nginx/error.log \
+--http-log-path=/var/log/nginx/access.log \
+--with-http_gzip_static_module        \
+--with-http_stub_status_module        \
+--with-http_ssl_module                \
+--with-pcre                           \
+--with-file-aio                       \
+--with-http_realip_module             \
+--without-http_scgi_module            \
+--without-http_uwsgi_module           \
+--without-http_fastcgi_module</code></pre><p><a href="http://nginx.org/en/docs/configure.html"target="_blank"rel="noopener">more</a><h2 id="基本操作"><a href="#基本操作"class="headerlink"title="基本操作"></a>基本操作</h2><p>启动(start)、重启(restart)，停止(stop) nginx<pre><code class="shell">sudo /etc/init.d/nginx restart
+
+# or
+sudo service nginx restart
+
+# reload
+sudo nginx -s reload</code></pre><h2 id="配置文件语法"><a href="#配置文件语法"class="headerlink"title="配置文件语法"></a>配置文件语法</h2><p>nginx 是模块化的系统<p>通过<code>configure</code>的参数编译可以配置模块<p><code>http_gzip_static_module</code>负责压缩，<code>http_ssl_module</code>负责加密 ……<p>整个配置文件都是由指令来控制, events, http, server, 和 location等<p>配置文件<code>/etc/nginx/nginx.conf</code>，<code>nginx -t</code>显示<h3 id="主配置文件"><a href="#主配置文件"class="headerlink"title="主配置文件:"></a>主配置文件:</h3><pre><code>user www-data;
+worker_processes 1;
+pid /run/nginx.pid;
+
+events {
+  worker_connections 768;
+}
+
+http {
+
+  sendfile on;
+  tcp_nopush on;
+  tcp_nodelay on;
+  keepalive_timeout 65;
+  types_hash_max_size 2048;
+
+  include /etc/nginx/mime.types;
+  default_type application/octet-stream;
+
+  access_log /var/log/nginx/access.log;
+  error_log /var/log/nginx/error.log;
+
+  gzip on;
+  gzip_disable &quot;msie6&quot;;
+
+  include /etc/nginx/conf.d/*.conf;
+  include /etc/nginx/sites-enabled/*;
+}</code></pre><p>指令和指令之间是有层级和继承关系的, 如 http 内的指令会影响到 server 的<p>假如要部署一个web服务, 在/etc/nginx/conf.d/目录下新增一个文件即可<p>http 和 events 还有 mail 是同级<h3 id="一个简单的配置："><a href="#一个简单的配置："class="headerlink"title="一个简单的配置："></a>一个简单的配置：</h3><pre><code>server {
+  listen 80;
+  root /home/yinsigan/foo;
+  server_name foo.bar.com;
+  location / {
+
+  }
+}</code></pre><p>listen 监听的端口<br>root 网站根目录<br>server_name 指定域名<h3 id="稍微详细的配置："><a href="#稍微详细的配置："class="headerlink"title="稍微详细的配置："></a>稍微详细的配置：</h3><pre><code>server {
+    listen      80;
+    server_name example.org www.example.org;
+    root        /data/www;
+
+    location / {
+        index   index.html index.php;
+    }
+
+    location ~* \.(gif|jpg|png)$ {
+        expires 30d;
+    }
+
+    location ~ \.php$ {
+        fastcgi_pass  localhost:9000;
+        fastcgi_param SCRIPT_FILENAME
+                      $document_root$fastcgi_script_name;
+        include       fastcgi_params;
+    }
+}</code></pre><p>访问<code>http://example.org</code>, 读取<code>/data/www/index.html</code>, 找不到就会读取<code>index.php</code>, 转发到<code>fastcgi_pass</code>里面的逻辑<p>访问<code>http://example.org/about.gif</code>, 读取<code>/data/www/about.gif</code>，缓存30天。<h2 id="反向代理"><a href="#反向代理"class="headerlink"title="反向代理"></a>反向代理</h2><h3 id="最简单的反向代理"><a href="#最简单的反向代理"class="headerlink"title="最简单的反向代理"></a>最简单的反向代理</h3><p>反向代理依赖于<code>ngx_http_proxy_module</code>这个module<p>反向代理服务器能代理的请求的协议包括http(s)，FastCGI，SCGI，uwsgi，memcached等<p>把 https 协议的图片请求反向代理到 http 协议的真实图片上<br>https协议的图片是不存在，而它有一个地址实际指向的内容是 http 协议中的图片。<pre><code># https
+server {
+  server_name www.example.com;
+  listen       443;
+  location /newchart/hollow/small/nsh000001.gif {
+    proxy_pass http://image.sinajs.cn/newchart/hollow/small/nsh000001.gif;
+  }
+}</code></pre><h2 id="gzip压缩"><a href="#gzip压缩"class="headerlink"title="gzip压缩"></a>gzip压缩</h2><p>需要nginx已经有编译过<code>ngx_http_gzip_module</code><p>压缩是需要消耗CPU，但能提高传缩的速度<h3 id="使用"><a href="#使用"class="headerlink"title="使用"></a>使用</h3><p>是否编译了<code>ngx_http_gzip_module</code><pre><code>sudo nginx -V</code></pre><p>输出<code>--with-ngx_http_gzip_module</code>ok<p>配置nginx的gzip:<pre><code>http {
+        gzip on;
+        gzip_disable &quot;msie6&quot;;
+
+        gzip_vary on;
+        gzip_proxied any;
+        gzip_comp_level 6;
+        gzip_buffers 16 8k;
+        gzip_http_version 1.1;
+        gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;
+        server {
+                location ~ ^/assets/ {
+                   gzip_static on;
+                   expires max;
+                   add_header Cache-Control public;
+                }        
+        }
+}</code></pre><p>最重要的是 http 中<code>gzip on</code>、<code>gzip_types</code><p><code>gzip_vary</code>等都是一些配置<p>在需要压缩的静态资源那里加上<pre><code>gzip_static on;
+expires max;
+add_header Cache-Control public;</code></pre><p><code>sudo nginx -s reload</code>重新加载生效<p><code>Content-Encoding: gzip</code>成功</section></article><footer class="footer-container"><section>Copyright &copy; 2020&nbsp;<a href="mailto:zowiegong@gmail.com">zowiegong</a>&nbsp;Powered by&nbsp;<a href="https://github.com/hexojs/hexo"target="_blank"rel="noopener noreferrer">Hexo</a>&nbsp;Theme by&nbsp;<a href="https://github.com/zowiegong/hexo-theme-os"target="_blank"rel="noopener noreferrer">OS.</a><br><a href="https://github.com/zowiegong/hexo-blog/edit/master/source/_posts/Nginx base.md"target="_blank">Edit source file</a></section></footer><div class="hover-pointer"id="scroll-to-top-container"><svg class="hover-fill"height="3rem "id="scroll-to-top-btn"version="1.1"viewBox="0 0 1024 1024"width="3rem"><path d="M825.568 555.328l-287.392-289.28C531.808 259.648 523.488 256.576 515.2 256.64 514.08 256.544 513.12 256 512 256c-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288 480 928c0 17.696 14.336 32 32 32s32-14.304 32-32L544 362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312C838.016 588.128 838.048 567.84 825.568 555.328z"p-id="1100"></path><path d="M864 192 160 192C142.336 192 128 177.664 128 160s14.336-32 32-32l704 0c17.696 0 32 14.336 32 32S881.696 192 864 192z"p-id="1101"></path></svg></div><script>window.pluginsConfig = JSON.parse('{"googleAnalytics":"UA-121105508-1","scrollToTop":true,"scrollSmooth":false,"comments":{"enable":true,"repo":"zowiegong/hexo-blog"}}')</script><script>pluginsConfig.comments.enable = true</script><script src="/main.js"></script>

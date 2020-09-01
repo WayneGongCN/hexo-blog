@@ -1,0 +1,88 @@
+<!DOCTYPE html><html lang="en"><title>React 开发浏览器扩展 webpack 配置 - OS</title><meta charset="utf-8"><meta name="description"content="React 开发浏览器扩展 webpack 配置"><meta name="keywords"><meta name="subtitle"content="Code &amp; Life"><meta name="author"content="zowiegong"><meta name="language"content="zh-CN"><meta name="timezone"content="Asia/Shanghai"><meta name="viewport"content="width=device-width,initial-scale=1"><link href="/manifest.json"rel="manifest"><link href="/atom.xml"rel="alternate"type="application/atom+xml"><link href="/favicon.ico"rel="shortcut icon"type="image/x-icon"><link href="/css/style.css"rel="stylesheet"><link href="/css/post.css"rel="stylesheet"><meta name="generator"content="Hexo 4.2.0"><header id="header-container"><h1 id="blog-title"><a href="/">OS</a></h1><nav><ul class="menu-list"><li class="menu-list-item"><a href="/categories"class="menu-name">categories</a><li class="menu-list-item"><a href="/tags"class="menu-name">tags</a><li class="menu-list-item"><a href="/about"class="menu-name">about</a></ul></nav></header><article class="main"><h1 id="post-title">React 开发浏览器扩展 webpack 配置</h1><div class="post-info"><time class="post-date">2018-06-02</time><ul class="tag-list"><li class="tag-item"><a href="/tags/react/"class="tag-name">#react</a><li class="tag-item"><a href="/tags/webpack/"class="tag-name">#webpack</a></ul></div><section class="markdown-body"><h2 id="用-webpack-为浏览器扩展项目打包"><a href="#用-webpack-为浏览器扩展项目打包"class="headerlink"title="用 webpack 为浏览器扩展项目打包"></a>用 webpack 为浏览器扩展项目打包</h2><p>浏览器扩展项目与普通 react 项目有些许差异，做个记录。<h3 id="目录结构"><a href="#目录结构"class="headerlink"title="目录结构"></a>目录结构</h3><pre><code>├─ .babelrc
+├─ .editorconfig
+├─ .gitignore
+├─ webpack.config.js
+├─ package.json
+├─ dist
+└─ src
+    ├─ manifest.json
+    ├─ icons
+    ├─ background
+    │    └─ index.js
+    ├─ content
+    │    └─ index.js
+    └─ popup
+            ├─ index.html
+            ├─ index.jsx
+            └─ style.css</code></pre><h3 id="项目依赖"><a href="#项目依赖"class="headerlink"title="项目依赖"></a>项目依赖</h3><pre><code>npm install webpack\
+ html-webpack-plugin\
+ copy-webpack-plugin\
+ clean-webpack-plugin\
+ style-loader\
+ css-loader\
+ babel-core\
+ babel-preset-react\
+ babel-preset-env\
+ babel-loader --save-dev
+
+npm install react\
+ react-dom --save</code></pre><h3 id="webpack-配置"><a href="#webpack-配置"class="headerlink"title="webpack 配置"></a>webpack 配置</h3><p><code>webpack.config.js</code><pre><code class="javascript">const path = require(&#39;path&#39;)
+const CopyWebpackPlugin = require(&#39;copy-webpack-plugin&#39;)
+const HtmlWebpackPlugin = require(&#39;html-webpack-plugin&#39;)
+const CleanWebpackPlugin = require(&#39;clean-webpack-plugin&#39;)
+
+module.exports = {
+    entry: {
+        backgournd: &#39;./src/background/index.js&#39;,
+        popup: &#39;./src/popup/index.jsx&#39;
+    },
+
+    watch: true,
+
+    output: {
+        path: path.resolve(__dirname, &#39;../dist&#39;),
+        filename: &#39;[name].bundle.js&#39;
+    },
+
+    resolve: {
+        extensions: [&#39;.js&#39;, &#39;.jsx&#39;]
+    },
+
+    devtool: &#39;inline-source-map&#39;,
+
+    plugins: [
+        new CleanWebpackPlugin([&#39;dist&#39;]),
+        new HtmlWebpackPlugin({
+            inject: true,
+            chunks: [&#39;popup&#39;],
+            filename: &#39;popup.html&#39;,
+            template: &#39;./src/popup/index.html&#39;
+        }),
+        new CopyWebpackPlugin([
+            { from: &#39;./src/manifest.json&#39; },
+            { from: &#39;./src/icons/&#39;, to: &#39;./icons&#39; }
+        ])
+    ],
+
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                use: [
+                    &#39;style-loader&#39;,
+                    &#39;css-loader&#39;
+                ]
+            },
+            {
+                test: /\.jsx$/,
+                exclude: /node_modules/,
+                use: [&#39;babel-loader&#39;],
+            }
+        ]
+    }
+}</code></pre><h3 id="babel-配置"><a href="#babel-配置"class="headerlink"title="babel 配置"></a>babel 配置</h3><p><code>.babelrc</code><pre><code class="json">{
+    &quot;presets&quot;: [
+        &quot;env&quot;,
+        &quot;react&quot;
+    ]
+}</code></pre></section></article><footer class="footer-container"><section>Copyright &copy; 2020&nbsp;<a href="mailto:zowiegong@gmail.com">zowiegong</a>&nbsp;Powered by&nbsp;<a href="https://github.com/hexojs/hexo"target="_blank"rel="noopener noreferrer">Hexo</a>&nbsp;Theme by&nbsp;<a href="https://github.com/zowiegong/hexo-theme-os"target="_blank"rel="noopener noreferrer">OS.</a><br><a href="https://github.com/zowiegong/hexo-blog/edit/master/source/_posts/React browser extension webpack.md"target="_blank">Edit source file</a></section></footer><div class="hover-pointer"id="scroll-to-top-container"><svg class="hover-fill"height="3rem "id="scroll-to-top-btn"version="1.1"viewBox="0 0 1024 1024"width="3rem"><path d="M825.568 555.328l-287.392-289.28C531.808 259.648 523.488 256.576 515.2 256.64 514.08 256.544 513.12 256 512 256c-4.672 0-9.024 1.088-13.024 2.88-4.032 1.536-7.872 3.872-11.136 7.136l-259.328 258.88c-12.512 12.48-12.544 32.736-0.032 45.248 6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.624-9.344L480 364.288 480 928c0 17.696 14.336 32 32 32s32-14.304 32-32L544 362.72l236.192 237.728c6.24 6.272 14.496 9.44 22.688 9.44s16.32-3.104 22.56-9.312C838.016 588.128 838.048 567.84 825.568 555.328z"p-id="1100"></path><path d="M864 192 160 192C142.336 192 128 177.664 128 160s14.336-32 32-32l704 0c17.696 0 32 14.336 32 32S881.696 192 864 192z"p-id="1101"></path></svg></div><script>window.pluginsConfig = JSON.parse('{"googleAnalytics":"UA-121105508-1","scrollToTop":true,"scrollSmooth":false,"comments":{"enable":true,"repo":"zowiegong/hexo-blog"}}')</script><script>pluginsConfig.comments.enable = true</script><script src="/main.js"></script>
