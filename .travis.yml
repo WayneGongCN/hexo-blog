@@ -3,35 +3,23 @@ language: node_js
 node_js:
   - lts/*
 
-cache:
-  directories:
-    - node_modules
-    - public
-    - cache
+script: yarn build
 
-before_cache:
-  - ls -lh
-  - mv db.json cache/
-  - ls cache -lh
-  - ls public -lh
-
-before_script:
-  - git clone https://github.com/zowiegong/hexo-theme-os.git themes/os
-  - sed  "s/{TOKEN}/${GITHUB_TOKEN}/" _config.yml > _config.yml.temp
-  - mv _config.yml.temp _config.yml
-  - sed  "s/{DATE}/$(date +%s)/" themes/os/source/sw.js > themes/os/source/_sw.js
-  - mv themes/os/source/_sw.js themes/os/source/sw.js
-  - ls cache -lh
-  - ls public -lh
-  - if [ -f cache/db.json ]; then mv cache/db.json ./; fi;
-  - ls -lh
-
-script: yarn deploy
+# deploy
+deploy:
+  provider: pages
+  skip_cleanup: true
+  keep_history: true
+  target_branch: gh-pages
+  local_dir: public
+  github_token: ${GITHUB_TOKEN}
+  on:
+    branch: master
 
 # SEO search engine ping
-after_script:
-  - curl https://www.google.com/ping?sitemap=https://zowiegong.com/sitemap.xml
-  - curl https://www.bing.com/ping?sitemap=https://zowiegong.com/sitemap.xml
-  - curl -X POST 'http://ping.baidu.com/ping/RPC2' --header "Content-Type:text/xml" -d "<?xml version="1.0"?><methodCall><methodName>weblogUpdates.ping</methodName><params><param><value><string>https://zowiegong.com/atom.xml</string></value></param><param><value><string>https://zowiegong.com/atom.xml</string></value></param></params></methodCall>"
-  - curl -X POST 'http://ping.baidu.com/ping/RPC2' --header "Content-Type:text/xml" -d "<?xml version="1.0"?><methodCall><methodName>weblogUpdates.ping</methodName><params><param><value><string>https://zowiegong.com/sitemap.xml</string></value></param><param><value><string>https://zowiegong.com/sitemap.xml</string></value></param></params></methodCall>"
-  - curl 'https://pingomatic.com/ping/?title=zowiegong&blogurl=https%3A%2F%2Fzowiegong.com&rssurl=https%3A%2F%2Fzowiegong.com%2Fatom.xml&chk_blogs=on&chk_feedburner=on&chk_tailrank=on&chk_superfeedr=on'
+after_deploy:
+  - curl https://www.google.com/ping?sitemap=https://lollollollollol.com/sitemap.xml
+  - curl https://www.bing.com/ping?sitemap=https://lollollollollol.com/sitemap.xml
+  - curl -X POST 'http://ping.baidu.com/ping/RPC2' --header "Content-Type:text/xml" -d "<?xml version="1.0"?><methodCall><methodName>weblogUpdates.ping</methodName><params><param><value><string>https://lollollollollol.com/atom.xml</string></value></param><param><value><string>https://lollollollollol.com/atom.xml</string></value></param></params></methodCall>"
+  - curl -X POST 'http://ping.baidu.com/ping/RPC2' --header "Content-Type:text/xml" -d "<?xml version="1.0"?><methodCall><methodName>weblogUpdates.ping</methodName><params><param><value><string>https://lollollollollol.com/sitemap.xml</string></value></param><param><value><string>https://lollollollollol.com/sitemap.xml</string></value></param></params></methodCall>"
+  - curl 'https://pingomatic.com/ping/?title=lollollollollol&blogurl=https%3A%2F%2Flollollollollol.com&rssurl=https%3A%2F%2Flollollollollol.com%2Fatom.xml&chk_blogs=on&chk_feedburner=on&chk_tailrank=on&chk_superfeedr=on'
