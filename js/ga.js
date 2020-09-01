@@ -1,1 +1,0 @@
-!function(a){createScriptTag(`https://www.googletagmanager.com/gtag/js?id=${a}`,{async:!0}).onload=function(g){window.gtag=function(){dataLayer.push(arguments)},window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config",a)}}(pluginsConfig.googleAnalytics);

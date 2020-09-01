@@ -5,4 +5,4 @@ Disallow: /categories/
 
 Allow: /posts/
 
-Sitemap: https://zowiegong.com/sitemap.xml
+Sitemap: https://lollollollollol.com/sitemap.xml
