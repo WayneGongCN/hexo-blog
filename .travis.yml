@@ -3,6 +3,10 @@ language: node_js
 node_js:
   - lts/*
 
+before_script:
+  - git clone https://github.com/zowiegong/hexo-theme-os.git themes/os
+  - npm install hexo-renderer-jade
+
 script: yarn build
 
 # deploy
